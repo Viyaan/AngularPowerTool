@@ -39,11 +39,11 @@
 						<!-- property binding for src attribute []-->
 						<td><img [src]="product.imageUrl" *ngIf="showImage"
 							[style.width.px]="imageWidth" /></td>
-						<td>{{product.productName| uppercase}}</td>
+						<td><a [routerLink]= "['/products',product.productId]" [queryParams]= "{name:product.productName, img:product.imageUrl,desc:product.description}">{{product.productName| productUpper}}</a></td>
 						<!-- All Data bindings below -->
 						<td>{{product.productCode}}</td>
 						<td>{{product.releaseDate}}</td>
-						<td>{{product.price| currency: 'INR'}}</td>
+						<td [ngStyle] ="{'color':product.price > 20 ?'green':'red'} ">{{product.price| currency: 'INR'}}</td>
 						<td><app-star [rating]="product.starRating"
 								(ratingClicked)="onRatingClicked($event)"></app-star></td>
 					</tr>
