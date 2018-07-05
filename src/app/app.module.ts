@@ -6,40 +6,35 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {ProductComponent} from './products/product.component';
-import {ProductFilterPipe} from './products/product-filter.pipe';
-import {StarComponent} from './shared/star/star.component';
-import {ProductService} from './products/product.service';
-import {ProductUpperPipe} from './products/product-upper.pipe';
+
+
+
 import {OrderComponent} from './order/order.component';
 import {HomeComponent} from './home/home.component';
 import {NotfoundComponent} from './shared/notfound/notfound.component';
-import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {ProductModule} from './products/product.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    ProductFilterPipe,
-    StarComponent,
-    ProductUpperPipe,
+
+  
     OrderComponent,
     HomeComponent,
     NotfoundComponent,
-    ProductDetailComponent,
+   
   ],
   imports: [
-    BrowserModule, CommonModule, FormsModule, HttpModule, RouterModule.forRoot([
-      {path: 'products', component: ProductComponent},
-      {path: 'products/:id', component: ProductDetailComponent},
+    BrowserModule, CommonModule, FormsModule, HttpModule,ProductModule, RouterModule.forRoot([
+
       {path: 'orders', component: OrderComponent},
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', component: NotfoundComponent}
     ])
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
